@@ -1,13 +1,25 @@
 import './App.css';
+import React, { useState, useEffect } from 'react';
+import { homePage, getPageFromPath } from './scripts/pageRouter';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Portfolio Calculator</h1>
-      </header>
-    </div>
-  );
+const App = () => {
+    const [page, setPage] = useState(homePage);
+
+    useEffect(() => {
+        console.log(`setting page to ${window.location.pathname}`);
+        setPage(getPageFromPath(window.location.pathname));
+    }, [window.location.pathname]);
+
+    return (
+        <div className="app">
+            <div className = 'app-bar'>
+                <h1>
+                    PORTFOLIO HELPER
+                </h1>
+            </div>
+            { page }
+        </div>
+    );
 }
 
 export default App;
