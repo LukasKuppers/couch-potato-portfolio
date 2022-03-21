@@ -16,6 +16,9 @@ const App = () => {
                 <h1>
                     PORTFOLIO HELPER
                 </h1>
+                <a href='/home'>HOME</a>
+                <br />
+                <a href='/buy-calculator'>CALCULATOR</a>
             </div>
             { page }
         </div>
