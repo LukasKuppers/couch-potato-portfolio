@@ -1,6 +1,9 @@
 import BuyCalculatorPage from "../components/pages/BuyCalculatorPage";
+import WelcomePage from "../components/pages/WelcomPage";
 
 const pageMap = {
+    "/": <WelcomePage />, 
+    "/home": <WelcomePage />, 
     "/buy-calculator": <BuyCalculatorPage />
 };
 
