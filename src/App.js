@@ -13,7 +13,7 @@ const App = () => {
     return (
         <div className="app">
             <div className = 'app-bar'>
-                <h1>
+                <h1 className='text-3xl font-bold'>
                     PORTFOLIO HELPER
                 </h1>
                 <a href='/home'>HOME</a>
