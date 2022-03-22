@@ -1,4 +1,5 @@
 import React from "react";
+import CalculatorInput from "../CalculatorInput";
 
 const BuyCalculatorPage = () => {
 
@@ -7,7 +8,8 @@ const BuyCalculatorPage = () => {
         <div className="buy-calculator-page">
             <h2>BUY CALCULATOR</h2>
 
-            
+            <CalculatorInput />
+
         </div>
     );
 }
