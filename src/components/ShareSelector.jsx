@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 const ShareSelector = ({submitDataCallback}) => {
-    const [lastSubmittedTicker, setLastSubmittedTicker] = useState('');
     const [tickerInput, setTickerInput] = useState('');
 
     const handleNewInput = (event) => {
@@ -9,7 +8,6 @@ const ShareSelector = ({submitDataCallback}) => {
     }
 
     const handleSubmit = (event) => {
-        setLastSubmittedTicker(tickerInput);
         submitDataCallback({
             'ticker': tickerInput, 
             'info': {}
