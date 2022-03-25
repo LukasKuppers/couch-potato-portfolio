@@ -3,7 +3,15 @@ import ShareSelector from "./ShareSelector";
 
 
 const CalculatorInput = () => {
+    const [nextFormID, setNextFormID] = useState(2);
     const [forms, setForms] = useState({1: {ticker: ''}});
+
+    const addSelector = () => {
+        let newForms = structuredClone(forms);
+        newForms[nextFormID] = {ticker: ''};
+        setForms(newForms);
+        setNextFormID(nextFormID + 1);
+    }
 
     const onChangeTicker = (id, newTicker) => {
         console.log(`change ticker:id:${id},ticker:${newTicker}`);
@@ -27,6 +35,7 @@ const CalculatorInput = () => {
     return (
         <div className="calculator-input">
             {renderForms()}
+            <button onClick={addSelector}>ADD</button>
         </div>
     );
 }
