@@ -1,11 +1,10 @@
 import React from 'react';
 
-const ShareSelector = ({id, ticker, onChangeTicker}) => {
+const ShareSelector = ({id, ticker, submit, revoke}) => {
 
-    const handleTickerChange = event => {
-        console.log(`Selector:handle change:${event.target.value}`);
-        onChangeTicker(id, event.target.value);
-    }
+    const handleTickerChange = event => submit(id, event.target.value);
+
+    const revokeSelector = () => revoke(id);
 
     return (
         <div className='share-selector'>
@@ -13,6 +12,7 @@ const ShareSelector = ({id, ticker, onChangeTicker}) => {
                 Ticker Symbol or Company Name:
                 <input type='text' value={ticker} onChange={handleTickerChange} />
             </label>
+            <button onClick={revokeSelector}>REMOVE</button>
         </div>
     );
 }

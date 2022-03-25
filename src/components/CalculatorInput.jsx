@@ -13,8 +13,13 @@ const CalculatorInput = () => {
         setNextFormID(nextFormID + 1);
     }
 
-    const onChangeTicker = (id, newTicker) => {
-        console.log(`change ticker:id:${id},ticker:${newTicker}`);
+    const removeSelector = (selectorId) => {
+        let newForms = structuredClone(forms);
+        delete newForms[selectorId];
+        setForms(newForms);
+    }
+
+    const submitData = (id, newTicker) => {
         let newForms = structuredClone(forms);
         newForms[id].ticker = newTicker;
         setForms(newForms);
@@ -27,7 +32,8 @@ const CalculatorInput = () => {
                     <li key={key}><ShareSelector 
                         id={key} 
                         ticker={data.ticker} 
-                        onChangeTicker={onChangeTicker} /></li>)}
+                        submit={submitData}
+                        revoke={removeSelector} /></li>)}
             </ul>
         );
     }
