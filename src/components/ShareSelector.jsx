@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 
-const ShareSelector = ({submitDataCallback}) => {
+const ShareSelector = () => {
     const [tickerInput, setTickerInput] = useState('');
+
+    const handleSubmit = (event) => {
+        console.log(`DEBUG:submit ticker:${event.target.value}`);
+        event.preventDefault();
+    }
 
     const handleNewInput = (event) => {
         setTickerInput(event.target.value);
-    }
-
-    const handleSubmit = (event) => {
-        submitDataCallback({
-            'ticker': tickerInput, 
-            'info': {}
-        });
-        event.preventDefault();
     }
 
     return (
