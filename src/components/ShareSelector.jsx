@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const ShareSelector = () => {
-    const [tickerInput, setTickerInput] = useState('');
+const ShareSelector = ({id, ticker, onChangeTicker}) => {
 
-    const handleSubmit = (event) => {
-        console.log(`DEBUG:submit ticker:${event.target.value}`);
-        event.preventDefault();
-    }
-
-    const handleNewInput = (event) => {
-        setTickerInput(event.target.value);
+    const handleTickerChange = event => {
+        console.log(`Selector:handle change:${event.target.value}`);
+        onChangeTicker(id, event.target.value);
     }
 
     return (
         <div className='share-selector'>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Ticker Symbol or Company Name:
-                    <input type='text' value={tickerInput} onChange={handleNewInput} />
-                </label>
-            </form>
+            <label>
+                Ticker Symbol or Company Name:
+                <input type='text' value={ticker} onChange={handleTickerChange} />
+            </label>
         </div>
     );
 }
