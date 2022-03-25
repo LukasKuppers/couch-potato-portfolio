@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import ShareSelector from "./ShareSelector";
 
+const defaultFormData = {
+    ticker: '', 
+    price: '', 
+    volume: '', 
+    desiredAlloc: ''
+};
 
 const CalculatorInput = () => {
     const [nextFormID, setNextFormID] = useState(2);
-    const [forms, setForms] = useState({1: {ticker: ''}});
+    const [forms, setForms] = useState({1: defaultFormData});
 
     const addSelector = () => {
         let newForms = structuredClone(forms);
-        newForms[nextFormID] = {ticker: ''};
+        newForms[nextFormID] = defaultFormData;
         setForms(newForms);
         setNextFormID(nextFormID + 1);
     }
@@ -19,9 +25,9 @@ const CalculatorInput = () => {
         setForms(newForms);
     }
 
-    const submitData = (id, newTicker) => {
+    const submitData = (id, dataKey, newData) => {
         let newForms = structuredClone(forms);
-        newForms[id].ticker = newTicker;
+        newForms[id][dataKey] = newData;
         setForms(newForms);
     }
 
@@ -32,6 +38,9 @@ const CalculatorInput = () => {
                     <li key={key}><ShareSelector 
                         id={key} 
                         ticker={data.ticker} 
+                        price={data.price}
+                        volume={data.volume}
+                        desiredAlloc={data.desiredAlloc}
                         submit={submitData}
                         revoke={removeSelector} /></li>)}
             </ul>
