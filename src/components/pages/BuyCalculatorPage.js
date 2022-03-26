@@ -6,7 +6,9 @@ const BuyCalculatorPage = () => {
 
     return (
         <div className="buy-calculator-page">
-            <span className='text-xl font-bold'>Buy Calculator</span>
+            <div className="mb-5">
+                <span className='text-4xl font-extrabold'>Buy Calculator</span>
+            </div>
             <CalculatorInput />
         </div>
     );
