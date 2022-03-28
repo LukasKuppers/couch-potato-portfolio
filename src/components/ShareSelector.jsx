@@ -24,15 +24,15 @@ const ShareSelector = ({id, ticker, price, volume, desiredAlloc, submit, revoke}
             </label>
             <label className={labelClass}>
                 <span className='mr-2'>Current Share Price</span>
-                <input className={inputClass} type='number' value={price} onChange={handlePriceChange} />
+                <input className={inputClass} type='number' min={0} value={price} onChange={handlePriceChange} />
             </label>
             <label className={labelClass}>
                 <span className='mr-2'>Shares Owned</span>
-                <input className={inputClass} type='number' value={volume} onChange={handleVolumeChange} />
+                <input className={inputClass} type='number' min={0} value={volume} onChange={handleVolumeChange} />
             </label>
             <label className={labelClass}>
                 <span className='mr-2'>Desired Allocation</span>
-                <input className={inputClass} type='number' value={desiredAlloc} onChange={handleAllocChange} />
+                <input className={inputClass} type='number' min={0} value={desiredAlloc} onChange={handleAllocChange} />
             </label>
             <button onClick={revokeSelector} className={styles.fab_red}>
                 <svg xmlns="http://www.w3.org/2000/svg" enableBackground='new 0 0 20 20' className="fill-white h-6 w-6" viewBox="0 0 20 20">

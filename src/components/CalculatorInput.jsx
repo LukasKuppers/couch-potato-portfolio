@@ -72,8 +72,8 @@ const CalculatorInput = () => {
             <label className={styles.label}>
                 Amount of New Capital
                 <input 
-                    className={styles.input_small}
-                    type='number' 
+                    className={styles.input_med + ' ml-1'}
+                    type='number' min={0}
                     value={capital} 
                     onChange={(e) => setCapital(e.target.value)} />
             </label>
