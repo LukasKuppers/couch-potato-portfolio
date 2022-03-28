@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ShareSelector from "./ShareSelector";
+import BuyCalcResult from "./BuyCalcResult";
 import distributeFunds from "../scripts/buyCalculator";
 import styles from "../Styles";
 
@@ -16,6 +17,7 @@ const CalculatorInput = () => {
 
     const [capital, setCapital] = useState(0);
     const [calcResult, setCalcResult] = useState({});
+    const [showResult, setShowResult] = useState(false);
 
     const addSelector = () => {
         let newForms = structuredClone(forms);
@@ -49,6 +51,7 @@ const CalculatorInput = () => {
 
         const calcResult = distributeFunds(calcInput, capital);
         setCalcResult(calcResult);
+        setShowResult(true);
     }
 
     const renderForms = () => {
@@ -88,7 +91,7 @@ const CalculatorInput = () => {
                     </svg>
                 </button>
             </div>
-            {JSON.stringify(calcResult)}
+            {showResult && <BuyCalcResult result={calcResult} closeModal={() => setShowResult(false)} />}
         </div>
     );
 }
