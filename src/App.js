@@ -11,7 +11,7 @@ const App = () => {
     }, [window.location.pathname]);
 
     return (
-        <div className="app">
+        <div className="app bg-gray-100" style={{height:'100vh'}}>
             <nav className='bg-blue-600 drop-shadow-2xl'>
                 <div className='max-w-7xl mx-auto  px-2 sm:px-6 lg:px-8'>
                     <div className='relative flex items-center justify-between h-16'>
