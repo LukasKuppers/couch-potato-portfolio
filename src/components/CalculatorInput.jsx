@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ShareSelector from "./ShareSelector";
 import distributeFunds from "../scripts/buyCalculator";
+import styles from "../Styles";
 
 const defaultFormData = {
     ticker: '', 
@@ -68,20 +69,20 @@ const CalculatorInput = () => {
 
     return (
         <div className="calculator-input">
-            <label className='block text-gray-500 font-bold mb-2'>
+            <label className={styles.label}>
                 Amount of New Capital
                 <input 
-                    className='ml-5 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-20 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500'
+                    className={styles.input_small}
                     type='number' 
                     value={capital} 
                     onChange={(e) => setCapital(e.target.value)} />
             </label>
-            <button onClick={calculateResult} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
+            <button onClick={calculateResult} className={styles.btn_pill_blue}>
                 Calculate Buy Orders
             </button>
             {renderForms()}
             <div className="flex flex-col justify-center items-center">
-                <button onClick={addSelector} className='mt-1 p-2 w-10 bg-blue-600 rounded-full hover:bg-blue-700 active:shadow-lg focus:outline-none drop-shadow-lg'>
+                <button onClick={addSelector} className={styles.fab_blue}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="fill-white h-6 w-6" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
                     </svg>
