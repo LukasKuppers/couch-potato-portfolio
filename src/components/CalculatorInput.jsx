@@ -108,17 +108,23 @@ const CalculatorInput = () => {
 
     return (
         <div className="calculator-input">
-            <label className={styles.label}>
-                Amount of New Capital
-                <input 
-                    className={styles.input_med + ' ml-1'}
-                    type='number' min={0}
-                    value={capital} 
-                    onChange={(e) => setCapital(e.target.value)} />
-            </label>
-            <button onClick={calculateResult} className={styles.btn_pill_blue}>
-                Calculate Buy Orders
-            </button>
+            <div className='flex flex-row w-full flex-grow flex-wrap'>
+                <div className='flex flex-1 justify-start'>
+                    <label className={styles.label}>
+                        Amount of New Capital
+                        <input 
+                            className={styles.input_med + ' ml-1'}
+                            type='number' min={0}
+                            value={capital} 
+                            onChange={(e) => setCapital(e.target.value)} />
+                    </label>
+                </div>
+                <div className='flex flex-1 justify-end self-start'>
+                    <button onClick={calculateResult} className={styles.btn_pill_blue + ' ml-1'}>
+                        Calculate Buy Orders
+                    </button>
+                </div>
+            </div>
             {renderForms()}
             <div className="flex flex-col justify-center items-center">
                 <button onClick={addSelector} className={styles.fab_blue}>
