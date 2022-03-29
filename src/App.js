@@ -17,7 +17,7 @@ const App = () => {
                     <div className='relative flex items-center justify-between h-16'>
                         <div className='flex-1 flex items-center justify-center sm:items-stretch sm:justify-start'>
                             <div className='hidden flex-shrink-0 items-center sm:block'>
-                                <span className='text-white text-lg font-extrabold'>DIY PORTFOLIO CALCULATOR</span>
+                                <span className='text-white text-3xl font-extrabold font-sans'>DIY invest help</span>
                             </div>
                             <div className='flex sm:block sm:ml-6'>
                                 <div className='flex space-x-4'>
