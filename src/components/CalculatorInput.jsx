@@ -11,6 +11,36 @@ const defaultFormData = {
     desiredAlloc: ''
 };
 
+const checkErrors = (formData) => {
+    let err = [];
+
+    // must have at least two entries
+    if (Object.entries(formData).length < 2) {
+        err.push('Your portfolio must contain at least two securities');
+    }
+    // must enter values for all fields
+    Object.values(formData).forEach(values => {
+        if (values.ticker == '' || values.price == '' || values.volume == '' || values.desiredAlloc == '') {
+            err.push('You must fill out all fields for each security');
+        }
+    });
+    // total allocation should sum to zero
+    let allocTotal = Object.values(formData).reduce((prev, curr) => {
+        return prev + Number(curr.desiredAlloc);
+    }, 0);
+    if (allocTotal < 99 || allocTotal > 101) {
+        err.push('Desired allocation of all securities should add to 100%');
+    }
+    // no negative numbers allowed
+    if (Object.values(formData).reduce((prev, curr) => {
+        return prev || (Number(curr.price) <= 0) || (Number(curr.volume) <= 0) || (Number(curr.desiredAlloc) <= 0);
+    }, false)) {
+        err.push('All numbers must be positive');
+    }
+
+    return err.join('. ');
+}
+
 const CalculatorInput = () => {
     const [nextFormID, setNextFormID] = useState(2);
     const [forms, setForms] = useState({1: defaultFormData});
@@ -39,17 +69,23 @@ const CalculatorInput = () => {
     }
 
     const calculateResult = () => {
-        // transform form data
-        let calcInput = {};
-        Object.values(forms).forEach(formData => {
-            calcInput[formData.ticker] = {
-                price: Number(formData.price), 
-                volume: parseInt(formData.volume), 
-                desiredAlloc: Number(formData.desiredAlloc)
-            };
-        });
+        const errRes = checkErrors(forms);
+        let calcResult = {};
 
-        const calcResult = distributeFunds(calcInput, capital);
+        if (errRes) {
+            calcResult = {error: errRes};
+        } else {
+            // transform form data
+            let calcInput = {};
+            Object.values(forms).forEach(formData => {
+                calcInput[formData.ticker] = {
+                    price: Number(formData.price), 
+                    volume: parseInt(formData.volume), 
+                    desiredAlloc: Number(formData.desiredAlloc)
+                };
+            });
+            calcResult = distributeFunds(calcInput, capital);
+        }
         setCalcResult(calcResult);
         setShowResult(true);
     }
