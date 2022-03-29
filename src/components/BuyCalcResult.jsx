@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../Styles";
 
 const BuyCalcResult = ({result, closeModal}) => {
 
     const renderResults = () => {
-        if (result == {}) {
+        if (result === {}) {
             return <div></div>;
         } else if ('error' in result) {
             return <p className='text-md font-bold text-red-600'>{result.error}</p>

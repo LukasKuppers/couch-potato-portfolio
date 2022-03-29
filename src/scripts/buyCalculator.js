@@ -20,11 +20,14 @@ const distributeFunds = (portfolioInfo, newCapital) => {
 
     while (newCapital > max_share_price) {
         let allocDiff = {}
-        Object.entries(portfolioInfo).forEach(([ticker, values]) => {
+        const porfolioEntries = Object.entries(portfolioInfo);
+        
+        for (let i = 0; i < porfolioEntries.length; i++) {
+            const [ticker, values] = porfolioEntries[i];
             const currentVolume = values.volume + new_volume[ticker]
             const currentAlloc = currentVolume * values.price / current_portfolio_value * 100;
             allocDiff[ticker] = values.desiredAlloc - currentAlloc;
-        });
+        }
 
         let ticker_to_buy = Object.keys(allocDiff).reduce((a, b) => {
             return allocDiff[a] > allocDiff[b] ? a : b;

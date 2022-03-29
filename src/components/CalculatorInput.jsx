@@ -20,7 +20,7 @@ const checkErrors = (formData) => {
     }
     // must enter values for all fields
     Object.values(formData).forEach(values => {
-        if (values.ticker == '' || values.price == '' || values.volume == '' || values.desiredAlloc == '') {
+        if (values.ticker === '' || values.price === '' || values.volume === '' || values.desiredAlloc === '') {
             err.push('You must fill out all fields for each security');
         }
     });
