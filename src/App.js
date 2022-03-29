@@ -8,7 +8,7 @@ const App = () => {
     useEffect(() => {
         console.log(`setting page to ${window.location.pathname}`);
         setPage(getPageFromPath(window.location.pathname));
-    }, [window.location.pathname]);
+    }, []);
 
     return (
         <div className="app bg-gray-100" style={{height:'100vh'}}>
