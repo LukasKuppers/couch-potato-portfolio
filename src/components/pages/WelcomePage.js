@@ -9,7 +9,7 @@ const WelcomePage = () => {
                     <span className='block'>Practical tools for</span>
                     <span className='block text-blue-600'>DIY Investing</span>
                 </h1>
-                <p className='mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl-sm:mx-auto md:text-xl lg:mx-0'>
+                <p className={styles.text_paragraph + ' mt-3 sm:mt-5 sm:text-lg sm:max-w-xl-sm:mx-auto md:text-xl lg:mx-0'}>
                     DIY Invest Help is built to assist new or experienced DIY investors in managing their portfolios. The buy calculator determines how many shares of each security you should buy to maintain your portfolio's desired allocation, making DCA-ing easier.
                 </p>
                 <div className='mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start'>

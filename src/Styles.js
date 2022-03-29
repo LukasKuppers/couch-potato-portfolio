@@ -6,7 +6,8 @@ const styles = {
     fab_blue: 'mt-1 p-2 w-10 bg-blue-600 rounded-full hover:bg-blue-700 active:shadow-lg focus:outline-none drop-shadow-lg', 
     fab_red: 'mt-3 p-2 w-10 h-10 bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg focus:outline-none', 
     btn_pill_blue: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full', 
-    text_title: 'text-4xl font-extrabold'
+    text_title: 'text-4xl font-extrabold', 
+    text_paragraph: 'text-base text-gray-500'
 };
 
 export default styles;
