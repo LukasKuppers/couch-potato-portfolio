@@ -24,7 +24,7 @@ const App = () => {
                                     <a href='/home' className='text-gray-300 hover:bg-blue-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                                         Home</a>
                                     <a href='/buy-calculator' className='text-gray-300 hover:bg-blue-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
-                                        Buy Calculator</a>
+                                        Calculators</a>
                                 </div>
                             </div>
                         </div>
