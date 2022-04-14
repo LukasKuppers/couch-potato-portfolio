@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ShareSelector from "./ShareSelector";
 import BuyCalcResult from "./BuyCalcResult";
 import distributeFunds from "../scripts/buyCalculator";
+import rebalanceFunds from "../scripts/RebalanceCalculator";
 import styles from "../Styles";
 
 const defaultFormData = {
@@ -68,7 +69,7 @@ const CalculatorInput = () => {
         setForms(newForms);
     }
 
-    const calculateResult = () => {
+    const calculateBuyResult = () => {
         const errRes = checkErrors(forms);
         let calcResult = {};
 
@@ -85,6 +86,27 @@ const CalculatorInput = () => {
                 };
             });
             calcResult = distributeFunds(calcInput, capital);
+        }
+        setCalcResult(calcResult);
+        setShowResult(true);
+    }
+
+    const calculateRebalanceResult = () => {
+        const errRes = checkErrors(forms);
+        let calcResult = {};
+
+        if (errRes) {
+            calcResult = {error: errRes};
+        } else {
+            let calcInput = {};
+            Object.values(forms).forEach(formData => {
+                calcInput[formData.ticker] = {
+                    price: Number(formData.price), 
+                    volume: parseInt(formData.volume), 
+                    desiredAlloc: Number(formData.desiredAlloc)
+                };
+            });
+            calcResult = rebalanceFunds(calcInput);
         }
         setCalcResult(calcResult);
         setShowResult(true);
@@ -120,8 +142,11 @@ const CalculatorInput = () => {
                     </label>
                 </div>
                 <div className='flex flex-1 justify-end self-start'>
-                    <button onClick={calculateResult} className={styles.btn_pill_blue + ' ml-1'}>
+                    <button onClick={calculateBuyResult} className={styles.btn_pill_blue + ' ml-1'}>
                         Calculate Buy Orders
+                    </button>
+                    <button onClick={calculateRebalanceResult} className={styles.btn_pill_blue + ' ml-1'}>
+                        Calculate Rebalance Orders
                     </button>
                 </div>
             </div>

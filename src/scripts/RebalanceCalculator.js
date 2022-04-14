@@ -9,17 +9,20 @@ const rebalanceFunds = (portfolioInfo) => {
     }
 
     // determine total portfolio value
-    totalValue = getTotalValue(portfolioInfo);
+    const totalValue = getTotalValue(portfolioInfo);
 
     // feed empty portfolio into buy calculator, with total value as capital
-    emptyPortfolio = Object.assign({}, portfolioInfo);
+    let emptyPortfolio = structuredClone(portfolioInfo);
     for (const ticker in emptyPortfolio) {
         emptyPortfolio[ticker].volume = 0;
     }
-    balancedVolumes = distributeFunds(portfolioInfo, totalValue);
+    const balancedVolumes = distributeFunds(emptyPortfolio, totalValue);
+
+    console.log(portfolioInfo);
+    console.log(balancedVolumes);
 
     // return differences between current and optimal
-    volume_diff = {};
+    let volume_diff = {};
     for (const ticker in portfolioInfo) {
         volume_diff[ticker] = balancedVolumes[ticker] - portfolioInfo[ticker].volume;
     }
